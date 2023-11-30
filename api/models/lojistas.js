@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       Lojistas.hasOne(models.Lojas, {
         foreignKey: 'lojas_id'
       })
-      Lojistas.hasMany(models.Logins, {
-        foreignKey: 'logins_id'
+      Lojistas.hasOne(models.Login_Lojistas, {
+        foreignKey: 'logins_lojistas_id'
       })
     }
   }
