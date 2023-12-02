@@ -4,18 +4,13 @@ const bodyParser = require('body-parser');
 // const niveis = require('./niveisRoute');
 // const turmas = require('./turmasRoute');
 
-const { Router } = require('express');
-
-const router = Router()
-router.get('/', (req,res) => {
-    res.send('Oi');
-})
+const logins = require('./loginsRoute')
 
 module.exports = app => {
     app.use(
         bodyParser.json(),
         bodyParser.urlencoded({ extended: false }),
-        router
+        logins
     );
     
 }
