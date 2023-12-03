@@ -1,89 +1,86 @@
 const database = require('../models');
 
-class LojaController {
-
-    static async getAllLojas (req, res) {
+class LoginLojistaController {
+    static async getAllLogins(req, res) {
         try {
-            const allLojas = await database.Lojas.findAll({
+            const allLogins = await database.Logins.findAll({
                 attributes: [
-                    'id', 'nome', 'cnpj', 'endereco', 'telefone'
+                    'id', 'email', 'senha'
                 ]
             });
-            return res.status(200).json(allLojas);
+            return res.status(200).json(allLogins);
         } catch (error) {
             return res.status(500).json(error.message);
         }
     }
 
-    static async getLoginById(req,res) {
-        const { id } = req.params;
+    static async getLoginById(req, res) {
+        const { id } = req.params
 
         try {
-            const loja = await database.Lojas.findOne({
+            const login = await database.Logins.findOne({
                 where: {
                     id: Number(id)
                 },
                 attributes: [
-                    'id', 'nome', 'cnpj', 'endereco', 'telefone'
+                    'id', 'email', 'senha'
                 ]
             });
-            return res.status(200).json(loja);
+            return res.status(200).json(login)
         } catch (error) {
             return res.status(500).json(error.message);
         }
     }
 
-    static async createLoja(req,res){
-        const newLoja = req.body;
+    static async createLogin(req, res) {
+        const newLogin = req.body;
 
         try {
-            const newLojaCreated = await database.Lojas.create(newLoja);
-            return res.status(200).json(newLojaCreated)
-            
+            const newLoginCreated = await database.Logins.create(newLogin)
+            return res.status(200).json(newLoginCreated)
         } catch (error) {
             return res.status(500).json(error.message);
         }
     }
 
-    static async updateLoja(req,res){
+    static async updateLogin(req, res) {
         const { id } = req.params;
         const newInfo = req.body;
 
         try {
-            await database.Lojas.update(newInfo, {
+            await database.Logins.update(newInfo, {
                 where: {
                     id: Number(id)
                 }
             });
-            const updatedLoja = await database.Lojas.findOne({
+            const updatedLogin = await database.Logins.findOne({
                 where: {
                     id: Number(id)
                 },
                 attributes: [
-                    'id', 'nome', 'cnpj', 'endereco', 'telefone'
+                    'id', 'email', 'senha'
                 ]
             });
-            return res.status(200).json(updatedLoja);
+            return res.status(200).json(updatedLogin);
         } catch (error) {
             return res.status(500).json(error.message);
         }
     }
 
-    static async deleteLogin(req,res){
+    static async deleteLogin(req, res) {
         const { id } = req.params;
 
         try {
-            await database.Lojas.destroy({
+            await database.Logins.destroy({
                 where: {
                     id: Number(id)
                 }
-            })
-            return res.status(200).json({mensagem: `id ${id} deletado!`})
+            });
+            return res.status(200).json({mensagem: `id ${id} deletado!` })
         } catch (error) {
             return res.status(500).json(error.message);
         }
     }
-
 }
 
-module.exports = LojaController
+module.exports = LoginLojistaController
