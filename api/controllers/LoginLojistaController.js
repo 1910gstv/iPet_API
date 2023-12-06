@@ -3,7 +3,7 @@ const database = require('../models');
 class LoginLojistaController {
     static async getAllLogins(req, res) {
         try {
-            const allLogins = await database.Logins.findAll({
+            const allLogins = await database.Login_Lojistas.findAll({
                 attributes: [
                     'id', 'email', 'senha'
                 ]
@@ -18,7 +18,7 @@ class LoginLojistaController {
         const { id } = req.params
 
         try {
-            const login = await database.Logins.findOne({
+            const login = await database.Login_Lojistas.findOne({
                 where: {
                     id: Number(id)
                 },
@@ -36,7 +36,7 @@ class LoginLojistaController {
         const newLogin = req.body;
 
         try {
-            const newLoginCreated = await database.Logins.create(newLogin)
+            const newLoginCreated = await database.Login_Lojistas.create(newLogin)
             return res.status(200).json(newLoginCreated)
         } catch (error) {
             return res.status(500).json(error.message);
@@ -53,7 +53,7 @@ class LoginLojistaController {
                     id: Number(id)
                 }
             });
-            const updatedLogin = await database.Logins.findOne({
+            const updatedLogin = await database.Login_Lojistas.findOne({
                 where: {
                     id: Number(id)
                 },
@@ -71,7 +71,7 @@ class LoginLojistaController {
         const { id } = req.params;
 
         try {
-            await database.Logins.destroy({
+            await database.Login_Lojistas.destroy({
                 where: {
                     id: Number(id)
                 }

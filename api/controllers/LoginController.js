@@ -28,7 +28,7 @@ class LoginController {
             });
             return res.status(200).json(login)
         } catch (error) {
-            return res.status(500).json(error.message);
+            return res.status(500).json(error.message)
         }
     }
 

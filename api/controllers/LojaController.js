@@ -15,7 +15,7 @@ class LojaController {
         }
     }
 
-    static async getLoginById(req,res) {
+    static async getLojaById(req,res) {
         const { id } = req.params;
 
         try {
@@ -69,7 +69,7 @@ class LojaController {
         }
     }
 
-    static async deleteLogin(req,res){
+    static async deleteLoja(req,res){
         const { id } = req.params;
 
         try {

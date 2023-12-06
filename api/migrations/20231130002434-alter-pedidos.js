@@ -3,26 +3,20 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {    
-    await queryInterface.addColumn('pedidos', 'loja_id', {
-    type: Sequelize.INTEGER,
+    await queryInterface.changeColumn('pedidos', 'createdAt', {
+    type: Sequelize.DATE,
     allowNull: false,
-    references: { model: 'Lojas', key: 'id'}
+    defaultValue: Sequelize.fn('now')
   });
-  await queryInterface.addColumn('pedidos', 'usuario_id', {
-    type: Sequelize.INTEGER,
+  await queryInterface.changeColumn('pedidos', 'updatedAt', {
+    type: Sequelize.DATE,
     allowNull: false,
-    references: { model: 'Usuarios', key: 'id'}
-  });
-  await queryInterface.addColumn('pedidos', 'pet_id', {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    references: { model: 'Pets', key: 'id'}
+    defaultValue: Sequelize.fn('now')
   });
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.removeColumn('pedidos', 'loja_id');
-    await queryInterface.removeColumn('pedidos', 'usuario_id');
-    await queryInterface.removeColumn('pedidos', 'pet_id');
+     await queryInterface.removeColumn('pedidos', 'createdAt');
+     await queryInterface.removeColumn('pedidos', 'updatedAt');
   }
 };

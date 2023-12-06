@@ -3,10 +3,10 @@ const LoginLojistaController = require('../controllers/LoginLojistaController');
 
 const router = Router()
 
-router.get('/logins', LoginLojistaController.getAllLogins);
-router.get('/logins/:id', LoginLojistaController.getLoginById);
-router.post('/logins', LoginLojistaController.createLogin);
-router.put('/logins/:id', LoginLojistaController.updateLogin);
-router.delete('/logins/:id', LoginLojistaController.deleteLogin);
+router.get('/loginLojistas', LoginLojistaController.getAllLogins);
+router.get('/loginLojistas/:id', LoginLojistaController.getLoginById);
+router.post('/loginLojistas', LoginLojistaController.createLogin);
+router.put('/loginLojistas/:id', LoginLojistaController.updateLogin);
+router.delete('/loginLojistas/:id', LoginLojistaController.deleteLogin);
 
 module.exports = router
