@@ -8,7 +8,9 @@ const logins = require('./loginsRoute')
 const loginLojistas = require('./loginLojistasRoute')
 const lojas = require('./lojasRoute')
 const lojistas = require('./lojistasRoute')
-const pedidos = require('./pedidosRoutes')
+const pedidos = require('./pedidosRoute')
+const usuarios = require('./usuariosRoute')
+const pets = require('./petsRoute')
 
 module.exports = app => {
     app.use(
@@ -18,7 +20,9 @@ module.exports = app => {
         lojas,
         lojistas,
         loginLojistas,
-        pedidos
+        pedidos,
+        pets,
+        usuarios
     );
     
 }

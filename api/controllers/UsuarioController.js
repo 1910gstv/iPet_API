@@ -20,7 +20,7 @@ class UsuarioController {
         try {
             const usuario = await database.Usuarios.findOne({
                 where: {
-                    id: Number(id)
+                    usuario_id: Number(id)
                 },
                 attributes: [
                     'usuario_id', 'nome', 'cpf', 'logins_id'
@@ -28,7 +28,7 @@ class UsuarioController {
             });
             return res.status(200).json(usuario)
         } catch (error) {
-            'id', 'nome', 'cpf', 'lojas_id', 'logins_lojistas_id'
+            return res.status(500).json(error.message)
         }
     }
 
@@ -50,12 +50,12 @@ class UsuarioController {
         try {
             await database.Usuarios.update(newInfo, {
                 where: {
-                    id: Number(id)
+                    usuario_id: Number(id)
                 }
             });
             const updatedUsuario = await database.Usuarios.findOne({
                 where: {
-                    id: Number(id)
+                    usuario_id: Number(id)
                 },
                 attributes: [
                     'usuario_id', 'nome', 'cpf', 'logins_id'
@@ -74,7 +74,7 @@ class UsuarioController {
         try {
             await database.Usuarios.destroy({
                 where: {
-                    id: Number(id)
+                    usuario_id: Number(id)
                 }
             })
             return res.status(200).json({mensagem: `id ${id} deletado!` })
